@@ -1,0 +1,14 @@
+image: docker:git
+services:
+- docker:dind
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+  - git clone https://github.com/CentOS/sig-cloud-instance-images.git instance-images --depth 1 -b CentOS-7
+
+build_base:
+  script:
+    - docker build -t registry.gitlab.com/gbraad/centos:7 ./instance-images/docker/
+    - docker push registry.gitlab.com/gbraad/centos:7
+  only:
+    - master
