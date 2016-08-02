@@ -17,8 +17,8 @@ clone_base:
 
 clone_tools:
   script:
-    - docker pull centos:tools
-    - docker tag centos:tools registry.gitlab.com/gbraad/centos:tools
+    - docker pull centos/tools:latest
+    - docker tag centos/tools:latest registry.gitlab.com/gbraad/centos:tools
     - docker push registry.gitlab.com/gbraad/centos:tools
   only:
     - master
