@@ -15,6 +15,14 @@ clone_base:
   only:
     - master
 
+clone_tools:
+  script:
+    - docker pull centos:tools
+    - docker tag centos:tools registry.gitlab.com/gbraad/centos:tools
+    - docker push registry.gitlab.com/gbraad/centos:tools
+  only:
+    - master
+
 build_base:
   script:
     - docker build -t registry.gitlab.com/gbraad/centos:base7 ./instance-images/docker/
