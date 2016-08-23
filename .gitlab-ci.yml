@@ -29,3 +29,21 @@ build_base:
     - docker push registry.gitlab.com/gbraad/centos:base7
   only:
     - master
+
+build_systemd:
+  script:
+    - docker build -t registry.gitlab.com/gbraad/centos:systemd ./systemd-base/
+    - docker push registry.gitlab.com/gbraad/centos:systemd
+  only:
+    - master
+  when: manual
+
+build_apache:
+  script:
+    - docker build -t registry.gitlab.com/gbraad/centos:apache ./systemd-apache/
+    - docker push registry.gitlab.com/gbraad/centos:apache
+  only:
+    - master
+  when: manual
+
+

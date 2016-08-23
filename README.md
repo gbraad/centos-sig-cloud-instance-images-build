@@ -10,9 +10,18 @@ Build wrapper for [CentOS sig-cloud](https://gitlab.com/gbraad/centos-sig-cloud-
 Usage
 -----
 
+### Cloned
+
   * CentOS base (7)  
     `docker pull registry.gitlab.com/gbraad/centos:7`
-  * ...
+
+
+### Custom
+
+  * CentOS 7 (systemd base)  
+    `FROM registry.gitlab.com/gbraad/centos:systemd`
+  * CentOS 7 - Apache (systemd)  
+    `docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v $PWD:/var/www/html:ro -p 80:80 registry.gitlab.com/gbraad/centos:apache`
 
 
 Authors
